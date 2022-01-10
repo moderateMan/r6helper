@@ -10,7 +10,7 @@ export type GetHashByKeyT = (variable: string) => string
 const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: GetHashByKeyT } => {
 	const hashs = (() => {
 		const hashData: HashsT = {};
-		window.location.hash.substring(1)
+		window.location.hash
 			.replace("?", "")
 			.split("&")
 			.forEach((item) => {

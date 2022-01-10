@@ -9,7 +9,7 @@ import {
 describe('utils', () => {
 	test('is obj', () => {
 		class Person { }
-		expect(isObject({})).toBe(true);
+		 expect(isObject({})).toBe(true);
 		expect(isObject({ a: 1 })).toBe(true);
 		expect(isObject({ 1: 1 })).toBe(true);
 		expect(isObject(undefined)).toBe(false);

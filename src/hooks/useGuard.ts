@@ -5,7 +5,7 @@ import {
 	ContextT,
 	preGuardHandlerT,
 	processLoop,
-	NotifyDataT
+	NotifyDataT,
 } from "../index";
 import { uuid } from "../utils";
 
@@ -27,8 +27,8 @@ const useGuard = (props: PropsT, depArr: any[] = []) => {
 	processLoop([preGuardHandler!]).then((data) => {
 		const { isGuard } = data;
 		if (isGuard && !outletContext.unlock) {
-			const unblock = (outletContext.unlock = outletContext.navigator.block(
-				(tx: any) => {
+			const unblock = (outletContext.unlock =
+				outletContext.navigator.block((tx: any) => {
 					outletContext.callFunc = () => {
 						unblock();
 						tx.retry();
@@ -43,12 +43,12 @@ const useGuard = (props: PropsT, depArr: any[] = []) => {
 										outletContext.notifyData!
 									);
 									outletContext.callFunc();
-								}
+								},
 							});
 						} else {
 							if (
 								window.confirm(
-									`Are you sure you want to go to 123 ${url}?`
+									`Are you sure you want to go to ${url}?`
 								)
 							) {
 								// Unblock the navigation.
@@ -58,8 +58,7 @@ const useGuard = (props: PropsT, depArr: any[] = []) => {
 							}
 						}
 					}, 100);
-				}
-			));
+				}));
 		}
 	});
 	useEffect(() => {

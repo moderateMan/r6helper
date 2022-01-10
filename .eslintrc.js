@@ -21,7 +21,6 @@ module.exports = {
     'space-in-parens': ['error', 'never'],
     'space-before-function-paren': 'off',
     'keyword-spacing': ['error', { before: true, after: true }],
-    'comma-dangle': ['error', 'never'],
     'function-paren-newline': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

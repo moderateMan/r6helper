@@ -4,12 +4,12 @@ import {
 	useCallback,
 	useContext,
 	useEffect,
-	useRef
+	useRef,
 } from "react";
 import {
 	UNSAFE_NavigationContext,
 	useNavigate,
-	NavigateFunction
+	NavigateFunction,
 } from "react-router-dom";
 import { isFunction, isPromise, debounce } from "./utils";
 let listenCallF: ((e: PopStateEvent) => void) | null;
@@ -98,7 +98,7 @@ export const processLoop = async (
 const R6HelperContext = createContext<ContextT>({
 	apiRecord: {
 		pushState: history.pushState,
-		replaceState: history.replaceState
+		replaceState: history.replaceState,
 	},
 	flag: false,
 	unlock: null,
@@ -136,7 +136,7 @@ const R6HelperContext = createContext<ContextT>({
 				apply(target, arglist, newTarget) {
 					self.notifyData = {
 						eTag: "navigate",
-						...newTarget[0]
+						...newTarget[0],
 					};
 					processLoop(pArr, self.notifyData).then((data) => {
 						const { isGuard } = data;
@@ -159,12 +159,12 @@ const R6HelperContext = createContext<ContextT>({
 										arglist,
 										newTarget
 									);
-								}
+								},
 							});
 							self.notifyData = null;
 						}
 					});
-				}
+				},
 			});
 		}
 	},
@@ -188,7 +188,7 @@ const R6HelperContext = createContext<ContextT>({
 		delete this.listenerList[id];
 		window.removeEventListener("popstate", listenCallF!);
 		this.updateProxy();
-	}
+	},
 });
 
 function useR6Helper(context: ContextT, children: React.ReactNode) {
@@ -196,7 +196,7 @@ function useR6Helper(context: ContextT, children: React.ReactNode) {
 	const navigator = naviCtx.navigator;
 	context.apiRecord = {
 		...context.apiRecord,
-		push: navigator.push
+		push: navigator.push,
 	};
 	context.navigator = navigator;
 	const contextRef = useRef(context).current;
@@ -217,7 +217,7 @@ function useR6Helper(context: ContextT, children: React.ReactNode) {
 				apply(target, arglist, newTarget) {
 					contextRef.gListener!(contextRef.notifyData!);
 					Reflect.apply(target, arglist, newTarget);
-				}
+				},
 			});
 		};
 		window.history.pushState = proxyApi("pushState");
@@ -226,7 +226,7 @@ function useR6Helper(context: ContextT, children: React.ReactNode) {
 	return createElement(
 		R6HelperContext.Provider,
 		{
-			value: contextRef
+			value: contextRef,
 		},
 		children
 	);
@@ -237,22 +237,24 @@ function R6Provider(props: {
 	children: React.ReactNode;
 	handleHistoryChange?: ListenerT;
 }) {
-
-	const navi: NavigateFunction = useNavigate()
-	const naviLister: EventListenerOrEventListenerObject = useCallback((event: CustomEventInit) => {
-		const { pathName, options } = event.detail
-		navi(pathName, options)
-	}, [])
+	const navi: NavigateFunction = useNavigate();
+	const naviLister: EventListenerOrEventListenerObject = useCallback(
+		(event: CustomEventInit) => {
+			const { pathName, options } = event.detail;
+			navi(pathName, options);
+		},
+		[]
+	);
 	useEffect(() => {
-		window.addEventListener('R6_GOTO', naviLister)
-	}, [])
+		window.addEventListener("R6_GOTO", naviLister);
+	}, []);
 	const defaultContext = useContext(R6HelperContext);
 	return useR6Helper(
 		{
 			...defaultContext,
 			...props.context,
 			navi: useNavigate(),
-			gListener: debounce<ListenerT>(props.handleHistoryChange!, 100)
+			gListener: debounce<ListenerT>(props.handleHistoryChange!, 100),
 		},
 		props.children
 	);
@@ -271,8 +273,8 @@ export function sleep(time: number) {
 	});
 }
 
-export { default as useGuard } from "./hooks/useHistoryListener";
-export { default as useHistoryListener } from "./hooks/useHistoryListener";
+export { default as useGuard } from "./hooks/useGuard";
+export { default as useHistoryListener } from "./hooks/useGuard";
 export { default as useGo, goto } from "./hooks/useGo";
 export { default as useSearch } from "./hooks/useSearch";
 export { default as useHash } from "./hooks/useHash";
