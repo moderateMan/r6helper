@@ -8,7 +8,8 @@ module.exports = {
 			{
 				modules: 'auto',
 				loose: true,
-				useBuiltIns: 'usage'
+				useBuiltIns: 'usage',
+				corejs: { version: "3.20.2", proposals: true }
 			},
 		],
 		["@babel/preset-react"],

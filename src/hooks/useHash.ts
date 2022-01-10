@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from "react";
-import { useLocation } from "react-router-dom";
 import { getQueryVariable } from '../utils'
 export interface HashsT {
 	[key: string]: any;
@@ -9,11 +8,9 @@ export type ChangeHashsT = ((hashObj: { [key: string]: any }) => void);
 export type GetHashByKeyT = (variable: string) => string
 
 const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: GetHashByKeyT } => {
-	const locationData = useLocation()
-	const hashs = useMemo(() => {
-		console.log('useMemo')
+	const hashs = (() => {
 		const hashData: HashsT = {};
-		locationData.hash.substring(1)
+		window.location.hash.substring(1)
 			.replace("?", "")
 			.split("&")
 			.forEach((item) => {
@@ -23,7 +20,7 @@ const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: Get
 				}
 			})
 		return hashData
-	}, [locationData.hash])
+	})()
 	function changeHashTemp(arg1: { [key: string]: any }): void {
 		const hashsNew = {
 			...hashs,
@@ -37,10 +34,10 @@ const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: Get
 				})
 				.join("&");
 	}
-	const changeHash: ChangeHashsT = useCallback<ChangeHashsT>(changeHashTemp, [locationData.hash])
+	const changeHash: ChangeHashsT = useCallback<ChangeHashsT>(changeHashTemp, [window.location.hash])
 	const getHashByKey = useCallback((variable: string) => {
 		return getQueryVariable({
-			targetStr: locationData.hash.substring(1),
+			targetStr: window.location.hash.substring(1),
 			variable,
 			splitStr: '&'
 		})

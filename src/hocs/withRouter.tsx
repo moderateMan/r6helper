@@ -20,11 +20,11 @@ function withRouter(Comp: ComponentClass<WithRouterPropsT> | FC<WithRouterPropsT
     const location = useLocation();
     const navigate = useNavigate();
     const params = useParams();
-    const { searchs, changeSearch } = useSearch();
+    const { searchs, getSreachByKey } = useSearch();
     return (
       <Comp
         {...props}
-        router={{ location, navigate, params, searchs, changeSearch }}
+        router={{ location, navigate, params, searchs, getSreachByKey }}
       />
     );
   }

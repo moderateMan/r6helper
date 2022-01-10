@@ -13,7 +13,9 @@ export const goto = (pathName: string, options?: NavigateOptions) => {
 			options
 		}
 	})
-	window.dispatchEvent(event)
+	setTimeout(()=>{
+		window.dispatchEvent(event)
+	})
 };
 
 export default useGo;

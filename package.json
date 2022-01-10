@@ -55,6 +55,7 @@
 		"typescript": "^4.0.2"
 	},
 	"dependencies": {
+		"core-js": "^3.20.2",
 		"react-router-dom": "^6.2.1"
 	}
 }

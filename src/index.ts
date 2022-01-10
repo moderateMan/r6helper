@@ -202,7 +202,6 @@ function useR6Helper(context: ContextT, children: React.ReactNode) {
 	const contextRef = useRef(context).current;
 	useEffect(() => {
 		const gCall = () => {
-			alert(123123)
 			if (!contextRef.unlock) {
 				contextRef.gListener!(contextRef.notifyData!);
 			}
