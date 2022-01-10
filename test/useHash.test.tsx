@@ -15,19 +15,19 @@ describe("useHash", () => {
 	it("test hashs", (done) => {
 		function Home() {
 			const [flag, setFlag] = React.useState(0);
-			const {hashs,changeHash,getHashByKey} = useHash();
-      expect(isFunction(changeHash)).toBe(true);
-      expect(isFunction(getHashByKey)).toBe(true);
+			const { hashs, changeHash, getHashByKey } = useHash();
+			expect(isFunction(changeHash)).toBe(true);
+			expect(isFunction(getHashByKey)).toBe(true);
 			React.useEffect(() => {
 				if (!Object.values(hashs).length) {
 					expect(hashs).toEqual({});
-          expect(getHashByKey('the')).toEqual("");
+					expect(getHashByKey("the")).toEqual("");
 					changeHash({ the: "changeHash1" });
 					setFlag(2);
 				} else {
 					if (flag !== 3) {
 						expect(hashs).toEqual({ the: "changeHash1" });
-            expect(getHashByKey('the')).toEqual("changeHash1");
+						expect(getHashByKey("the")).toEqual("changeHash1");
 						changeHash({ the: "changeHash2" });
 						setFlag(3);
 					}
@@ -35,7 +35,7 @@ describe("useHash", () => {
 			}, [hashs.the]);
 			if (flag == 3) {
 				expect(hashs).toEqual({ the: "changeHash2" });
-        expect(getHashByKey('the')).toEqual("changeHash2");
+				expect(getHashByKey("the")).toEqual("changeHash2");
 				done();
 			}
 			return <h1>Home</h1>;
@@ -43,7 +43,7 @@ describe("useHash", () => {
 
 		TestRenderer.act(() => {
 			TestRenderer.create(
-				<MemoryRouter initialEntries={["/home#?the=hash"]}>
+				<MemoryRouter initialEntries={["/home#the=hash"]}>
 					<Routes>
 						<Route path="/home" element={<Home />} />
 					</Routes>
