@@ -1,13 +1,23 @@
+<p align="center">
+ <img src="https://s1.imagehub.cc/images/2022/01/11/favicon-x128.png" alt="favicon-x128.png" border="0" />
+</p>
+<h1 align="center">R6helper</h1>
+
+<p align="center">
+  <img src="https://shields.io/badge/TypeScript-Driver-green?logo=typescript" alt="lang">
+  <img src="https://shields.io/badge/version-0.2.2-green?logo=github" alt="version">
+</p>
+
 # R6Helper
 ![ezgif.com-gif-maker.gif](https://s2.loli.net/2022/01/04/MYWDZKIem9tpB2r.gif)
 
 
 **辅助强化 React-router v6 的功能，其中主要包括：**
 
-1. 路由守卫
-2. 路由变化的监听
+1. 路由守卫：useGuard
+2. 全局路由监听： handleHistoryChange
 3. 提供 Hoc：withRouter
-4. 提供 Hook：useHashs
+4. 提供 Hook：useHashs&useSearchs
 5. 提供 Provier：R6Provider
 6. 提供 Hook：useGo
 
@@ -127,16 +137,24 @@ export interface WithRouterPropsT {
     hashs: HashsT;
     changeHash: ChangeHashsT;
     searchs: SearchsT;
-    changeSearch: ChangeSearchsT;
 ```
 
 hashs,changeHash 内部使用 **useHashs**来提供，同时`useHashs` hook 也支持独立使用
-searchs,changeSearch 内部使用 **useSearch**来提供，同时`useSearch` hook 也支持独立使用
+searchs 内部使用 **useSearch**来提供，同时`useSearch` hook 也支持独立使用
 
 
 ## 想去哪就去哪，无论你在哪 useGo-[6]
 
+组件内部
+
 ```js
 const go = useGo();
 go("路由地址",{replace:false,state:{}})
+```
+
+非组件
+
+```js
+import{ goto } from "r6helper";
+goto("路由地址",{replace:false,state:{}})
 ```

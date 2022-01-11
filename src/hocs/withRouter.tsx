@@ -1,10 +1,16 @@
 import React from "react";
+import { useLocation, useParams, Params } from "react-router";
 import type { ComponentClass, FC } from "react";
-import { useGo } from "../index";
-import { useLocation, useNavigate, useParams, Params } from "react-router";
 import type { Location, NavigateFunction } from "react-router";
-import useSearch from "../hooks/useSearch";
-import type { SearchsT, ChangeSearchsT } from "../hooks/useSearch";
+import type { SearchsT, GetSreachByKeyT } from "../index";
+import {
+	ChangeHashsT,
+	GetHashByKeyT,
+	HashsT,
+	useSearch,
+	useGo,
+	useHash,
+} from "../index";
 
 export interface WithRouterPropsT {
 	router: {
@@ -12,7 +18,10 @@ export interface WithRouterPropsT {
 		navigate: NavigateFunction;
 		params: Readonly<Params<string>>;
 		searchs: SearchsT;
-		changeSearch: ChangeSearchsT;
+		getSreachByKey: GetSreachByKeyT;
+		hashs: HashsT;
+		getHashByKey: GetHashByKeyT;
+		changeHash: ChangeHashsT;
 	};
 }
 
@@ -23,6 +32,7 @@ function withRouter(
 		const location = useLocation();
 		const params = useParams();
 		const { searchs, getSreachByKey } = useSearch();
+		const { hashs, getHashByKey, changeHash } = useHash();
 		const goto = useGo();
 		return (
 			<Comp
@@ -33,6 +43,9 @@ function withRouter(
 					params,
 					searchs,
 					getSreachByKey,
+					hashs,
+					getHashByKey,
+					changeHash,
 				}}
 			/>
 		);

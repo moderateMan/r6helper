@@ -1,6 +1,6 @@
 {
 	"name": "r6helper",
-	"version": "0.1.2",
+	"version": "0.2.2",
 	"description": "react router helper",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -23,6 +23,10 @@
 	"author": "闲D阿强",
 	"license": "MIT",
 	"homepage": "https://www.moderate.run/#/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/moderateReact/r6helper"
+	  },
 	"devDependencies": {
 		"@babel/cli": "^7.5.5",
 		"@babel/core": "^7.4.4",

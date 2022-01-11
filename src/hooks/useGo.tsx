@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useNavigate, NavigateFunction, NavigateOptions } from "react-router-dom";
+import { useNavigate, NavigateFunction, NavigateOptions } from "react-router";
 
 const useGo = () => {
 	const goto = useRef<NavigateFunction>(useNavigate()).current;
@@ -7,15 +7,15 @@ const useGo = () => {
 };
 
 export const goto = (pathName: string, options?: NavigateOptions) => {
-	const event = new CustomEvent('R6_GOTO', {
+	const event = new CustomEvent("R6_GOTO", {
 		detail: {
 			pathName,
-			options
-		}
-	})
-	setTimeout(()=>{
-		window.dispatchEvent(event)
-	})
+			options,
+		},
+	});
+	setTimeout(() => {
+		window.dispatchEvent(event);
+	});
 };
 
 export default useGo;

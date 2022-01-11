@@ -1,13 +1,17 @@
-import { useCallback, useMemo } from "react";
-import { getQueryVariable } from '../utils'
+import { useCallback } from "react";
+import { getQueryVariable } from "../utils";
 export interface HashsT {
 	[key: string]: any;
 }
 
-export type ChangeHashsT = ((hashObj: { [key: string]: any }) => void);
-export type GetHashByKeyT = (variable: string) => string
+export type ChangeHashsT = (hashObj: { [key: string]: any }) => void;
+export type GetHashByKeyT = (variable: string) => string;
 
-const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: GetHashByKeyT } => {
+const useHash = (): {
+	hashs: HashsT;
+	changeHash: ChangeHashsT;
+	getHashByKey: GetHashByKeyT;
+} => {
 	const hashs = (() => {
 		const hashData: HashsT = {};
 		window.location.hash
@@ -18,13 +22,13 @@ const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: Get
 					const [key, value] = item.split("=");
 					hashData[key] = value;
 				}
-			})
-		return hashData
-	})()
+			});
+		return hashData;
+	})();
 	function changeHashTemp(arg1: { [key: string]: any }): void {
 		const hashsNew = {
 			...hashs,
-			...arg1
+			...arg1,
 		};
 		window.location.hash =
 			"?" +
@@ -34,14 +38,16 @@ const useHash = (): { hashs: HashsT; changeHash: ChangeHashsT, getHashByKey: Get
 				})
 				.join("&");
 	}
-	const changeHash: ChangeHashsT = useCallback<ChangeHashsT>(changeHashTemp, [window.location.hash])
+	const changeHash: ChangeHashsT = useCallback<ChangeHashsT>(changeHashTemp, [
+		window.location.hash,
+	]);
 	const getHashByKey = useCallback((variable: string) => {
 		return getQueryVariable({
 			targetStr: window.location.hash.substring(1),
 			variable,
-			splitStr: '&'
-		})
-	}, [])
+			splitStr: "&",
+		});
+	}, []);
 	return { hashs, changeHash, getHashByKey };
 };
 
