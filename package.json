@@ -1,12 +1,12 @@
 {
 	"name": "r6helper",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "react router helper",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "rimraf dist && tsc",
-		"pub": "yarn publish",
+		"pub": "yarn build && yarn publish",
 		"pub:next": "yarn publish --tag next",
 		"lint": "eslint src/**/*.ts",
 		"test": "jest --silent",

@@ -5,7 +5,7 @@
 
 <p align="center">
   <img src="https://shields.io/badge/TypeScript-Driver-green?logo=typescript" alt="lang">
-  <img src="https://shields.io/badge/version-0.2.2-green?logo=github" alt="version">
+  <img src="https://shields.io/badge/version-0.2.3-green?logo=github" alt="version">
 </p>
 
 # R6Helper
