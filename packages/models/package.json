@@ -1,0 +1,47 @@
+{
+  "name": "@moderate-cli/models",
+  "version": "0.2.0",
+  "description": "> TODO: description",
+  "main": "dist/index.js",
+  "bin": {
+    "moderate-cli": "./dist/"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "pub": "yarn build && yarn publish",
+    "pub:next": "yarn publish --tag next",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest --silent",
+    "test:report": "jest --coverage  --silent"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "闲D阿强",
+  "license": "MIT",
+  "homepage": "https://www.moderate.run/#/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moderateReact/r6helper"
+  },
+  "dependencies": {
+    "@moderate-cli/get-npm-info": "^0.2.0",
+    "@moderate-cli/log": "^0.2.0",
+    "@moderate-cli/utils": "^0.2.0",
+    "axios": "^0.27.2",
+    "colors": "^1.4.0",
+    "fs-extra": "^9.0.1",
+    "npminstall": "^4.10.0",
+    "path-exists": "^4.0.0",
+    "pkg-dir": "^5.0.0",
+    "semver": "^7.3.4",
+    "inquirer": "^8.1.0",
+    "simple-git": "^2.39.0",
+    "terminal-link": "^2.1.1",
+    "user-home": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/semver": "^7.3.12"
+  }
+}

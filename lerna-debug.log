@@ -1,0 +1,13 @@
+0 silly argv { _: [ 'link' ], lernaVersion: '3.22.1', '$0': 'lerna' }
+1 notice cli v3.22.1
+2 verbose rootPath /Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts
+3 error Error: Invalid package name " @moderate-cli/models": name cannot contain leading or trailing spaces; name can only contain URL-friendly characters
+3 error     at invalidPackageName (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:86:15)
+3 error     at Result.setName (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:121:11)
+3 error     at new Result (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:111:23)
+3 error     at Function.resolve (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:58:15)
+3 error     at /usr/local/lib/node_modules/lerna/node_modules/@lerna/package-graph/index.js:61:30
+3 error     at Array.forEach (<anonymous>)
+3 error     at /usr/local/lib/node_modules/lerna/node_modules/@lerna/package-graph/index.js:55:38
+3 error     at Map.forEach (<anonymous>)
+3 error     at new PackageGraph (/usr/local/lib/node_modules/lerna/node_modules/@lerna/package-graph/index.js:44:10)

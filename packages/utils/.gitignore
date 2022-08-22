@@ -1,0 +1,10 @@
+node_modules
+node_modules2
+yarn.lock
+.DS_Store
+yarn-error.log
+coverage
+./yarn.lock
+./package-lock.json
+dist
+blog.md

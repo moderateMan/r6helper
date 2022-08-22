@@ -1,0 +1,37 @@
+{
+  "name": "@moderate-cli/package",
+  "version": "0.2.0",
+  "description": "> TODO: description",
+  "author": "qanglee <545540710@qq.com>",
+  "homepage": "https://github.com/moderateMan/moderate-cli#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moderateMan/moderate-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/moderateMan/moderate-cli/issues"
+  },
+  "dependencies": {
+    "@moderate-cli/get-npm-info": "^0.2.0",
+    "@moderate-cli/utils": "^0.2.0",
+    "fs-extra": "^9.0.1",
+    "npminstall": "^4.10.0",
+    "path-exists": "^4.0.0",
+    "pkg-dir": "^5.0.0"
+  }
+}
