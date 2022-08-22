@@ -1,6 +1,6 @@
 {
   "name": "@moderate-cli/init",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "> TODO: description",
   "main": "dist/index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   "license": "MIT",
   "homepage": "https://www.moderate.run/#/",
   "publishConfig": {
-		"access": "public"
-	},
+    "access": "public"
+  },
   "dependencies": {
-    "@moderate-cli/models": "^0.2.1",
-    "@moderate-cli/utils": "^0.2.1",
+    "@moderate-cli/models": "^0.2.2",
+    "@moderate-cli/utils": "^0.2.2",
     "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^8.2.3",
     "@types/semver": "^7.3.12",

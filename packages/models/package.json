@@ -1,6 +1,6 @@
 {
   "name": "@moderate-cli/models",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "> TODO: description",
   "main": "dist/index.js",
   "scripts": {
@@ -15,13 +15,13 @@
     "dist"
   ],
   "publishConfig": {
-		"access": "public"
-	},
+    "access": "public"
+  },
   "author": "闲D阿强",
   "license": "MIT",
   "homepage": "https://www.moderate.run/#/",
   "dependencies": {
-    "@moderate-cli/utils": "^0.2.1",
+    "@moderate-cli/utils": "^0.2.2",
     "axios": "^0.27.2",
     "colors": "^1.4.0",
     "fs-extra": "^9.0.1",
