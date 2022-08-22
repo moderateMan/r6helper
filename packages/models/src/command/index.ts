@@ -1,8 +1,6 @@
-"use strict";
-
 import semver from "semver";
 import colors from "colors/safe";
-const log = require("@moderate-cli/log");
+import { log } from "@moderate-cli/utils";
 
 const LOWEST_NODE_VERSION = "12.0.0";
 
@@ -28,7 +26,7 @@ class Command {
 			chain = chain.then(() => this.init());
 			chain = chain.then(() => this.exec());
 			chain.catch((err) => {
-				log.error(err.message);
+				log.error("error", err.message);
 			});
 		});
 	}

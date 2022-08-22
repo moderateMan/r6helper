@@ -1,5 +1,3 @@
-'use strict';
-
 import axios from 'axios';
 
 const BASE_URL = process.env.MODERATE_CLI_BASE_URL ? process.env.MODERATE_CLI_BASE_URL :

@@ -1,23 +1,22 @@
-"use strict";
-
 import path from "path";
 import fse from "fs-extra";
 import { sync as pkgDir } from "pkg-dir";
 import { sync as pathExists } from "path-exists";
 const npminstall = require("npminstall");
-const { isObject, formatPath } = require("@moderate-cli/utils");
 const {
-	getDefaultRegistry,
+	isObject,
+	formatPath,
 	getNpmLatestVersion,
-} = require("@moderate-cli/get-npm-info");
+	getDefaultRegistry,
+} = require("@moderate-cli/utils");
 
 class Package {
-    targetPath:string=""
-    storeDir:string=""
-    packageName:string=""
-    packageVersion:string=""
-    cacheFilePathPrefix:string=""
-	constructor(options:any) {
+	targetPath: string = "";
+	storeDir: string = "";
+	packageName: string = "";
+	packageVersion: string = "";
+	cacheFilePathPrefix: string = "";
+	constructor(options: any) {
 		if (!options) {
 			throw new Error("Package类的options参数不能为空！");
 		}
@@ -52,7 +51,7 @@ class Package {
 		);
 	}
 
-	getSpecificCacheFilePath(packageVersion:string) {
+	getSpecificCacheFilePath(packageVersion: string) {
 		return path.resolve(
 			this.storeDir,
 			`_${this.cacheFilePathPrefix}@${packageVersion}@${this.packageName}`
@@ -116,7 +115,7 @@ class Package {
 
 	// 获取入口文件的路径
 	getRootFilePath() {
-		function _getRootFile(targetPath:string) {
+		function _getRootFile(targetPath: string) {
 			// 1. 获取package.json所在目录
 			const dir = pkgDir(targetPath);
 			if (dir) {
@@ -134,7 +133,7 @@ class Package {
 		if (this.storeDir) {
 			return _getRootFile(this.cacheFilePath);
 		} else {
-			return _getRootFile(this.targetPath);
+			return _getRootFile(this.targetPath+"/"+this.packageName);
 		}
 	}
 }

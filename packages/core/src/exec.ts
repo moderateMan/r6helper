@@ -1,9 +1,6 @@
-"use strict";
-
-const path = require("path");
+import path from "path";
 import { Package } from "@moderate-cli/models";
-const log = require("@moderate-cli/log");
-import { exec } from "@moderate-cli/utils";
+import { log,exec } from "@moderate-cli/utils";
 
 const SETTINGS = {
 	init: "@moderate-cli/init",
@@ -25,14 +22,14 @@ async function main(this: any, ...rest: any) {
 	const homePath = process.env.CLI_HOME_PATH;
 	let storeDir = "";
 	let pkg;
-	log.verbose("targetPath", targetPath);
-	log.verbose("homePath", homePath);
+	log.verbose("targetPath", targetPath + "");
+	log.verbose("homePath", homePath + "");
 
 	const packageName = SETTINGS[name as keyof typeof SETTINGS];
 	const packageVersion = "latest";
 
 	if (!targetPath) {
-		targetPath = path.resolve(homePath, CACHE_DIR); // 生成缓存路径
+		targetPath = path.resolve(homePath!, CACHE_DIR); // 生成缓存路径
 		storeDir = path.resolve(targetPath, "node_modules");
 		log.verbose("targetPath", targetPath);
 		log.verbose("storeDir", storeDir);
@@ -82,15 +79,15 @@ async function main(this: any, ...rest: any) {
 				stdio: "inherit",
 			});
 			child.on("error", (e: any) => {
-				log.error(e.message);
+				log.error("error",e.message);
 				process.exit(1);
 			});
 			child.on("exit", (e: any) => {
-				log.verbose("命令执行成功:" + e);
+				log.verbose("info","命令执行成功:" + e);
 				process.exit(e);
 			});
 		} catch (e: any) {
-			log.error(e.message);
+			log.error("error",e.message);
 		}
 	}
 }

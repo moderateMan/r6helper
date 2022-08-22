@@ -1,5 +1,3 @@
-"use strict";
-
 import fs from "fs";
 import path from "path";
 import { Spinner } from "cli-spinner";
@@ -80,7 +78,7 @@ function writeFile(path: string, data: any, { rewrite = true } = {}) {
 	}
 }
 
-export { default as getNpmInfp } from "./get-npm-info";
+export * from "./get-npm-info";
 export { default as log } from "./log";
 export { default as request } from "./request";
 

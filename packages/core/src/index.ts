@@ -1,37 +1,31 @@
-"use strict";
-
-module.exports = core;
-
 // 外部依赖写在上面
-const path = require("path");
-const userHome = require("user-home");
-const semver = require("semver");
-const colors = require("colors");
-const pkg = require("../package.json");
-const log = require("@moderate-cli/log");
-import exec from './exec'
-import commander from 'commander'
-
+import path from "path";
+import userHome from "user-home";
+import semver from "semver";
+import colors from "colors";
+import { log,getNpmSemverVersion } from "@moderate-cli/utils";
+import exec from "./exec";
+import commander from "commander";
 // 变量
-import constant from './const'
-const { getNpmSemverVersion } = require("@moderate-cli/get-npm-info");
+import constants from "./constants";
+const pkg = require("../package.json");
 
-const pathExistsSync = require("path-exists")
-import rootCheck from 'root-check'
+const pathExistsSync = require("path-exists");
+import rootCheck from "root-check";
 
 // 创建一个Command 实例
-const program:commander.Command = new commander.Command();
+const program: commander.Command = new commander.Command();
 
 // 当前项目的版本号
 const currentVersion = pkg.version;
 async function core() {
 	try {
-        await prepare();
-        checkEnv();
-        registerCommand();
-    } catch (e:any) {
-        console.log(e)
-    }
+		await prepare();
+		checkEnv();
+		registerCommand();
+	} catch (e: any) {
+		console.log(e);
+	}
 }
 
 async function prepare() {
@@ -53,7 +47,7 @@ function checkNodeVersion() {
 	// 第一步，获取当前mode版本
 	const currentVersion = process.version;
 	// 第二步，比对
-	const lowestVersion = constant.LOWEST_NODE_VERSION;
+	const lowestVersion = constants.LOWEST_NODE_VERSION;
 	if (!semver.gte(currentVersion, lowestVersion)) {
 		throw new Error(
 			`moderate-cli 需要安装 v${lowestVersion}以上版本的 Nodejs`
@@ -65,7 +59,7 @@ function checkRoot() {
 	// console.log("未权限降级前"+process.geteuid())
 	// 需要降级，为什么？
 	// 如果搞权限创建的文件，低权限都搞不了
-	rootCheck()
+	rootCheck();
 }
 
 // 查询主目录
@@ -77,7 +71,7 @@ function checkUsrHome() {
 }
 
 // 根据参数，设置log级别
-function checkArgs(args:{[key:string]:any}) {
+function checkArgs(args: { [key: string]: any }) {
 	if (args.debug) {
 		process.env.CLI_DEBUG = true;
 		process.env.LOG_LEVEL = "verbose";
@@ -96,18 +90,18 @@ function checkEnv() {
 		});
 	}
 	createDefaultConfig();
-	log.verbose("环境变量", process.env.CLI_HOME_PATH);
+	log.verbose("环境变量", JSON.stringify(process.env.CLI_HOME_PATH));
 }
 
 function createDefaultConfig() {
 	const cliConfig = {
-		cliHome:"",
+		cliHome: "",
 		home: userHome,
 	};
 	if (process.env.CLI_HOME) {
 		cliConfig["cliHome"] = path.join(userHome, process.env.CLI_HOME);
 	} else {
-		cliConfig["cliHome"] = path.join(userHome, constant.DEFAULT_CLI_HOME);
+		cliConfig["cliHome"] = path.join(userHome, constants.DEFAULT_CLI_HOME);
 	}
 	process.env.CLI_HOME_PATH = cliConfig.cliHome;
 }
@@ -121,6 +115,7 @@ async function checkGlobalUpdate() {
 	// 如果最新版本大于当前版本
 	if (versionLatest && semver.gt(versionLatest, currentVersion)) {
 		log.warn(
+			"warn",
 			colors.yellow(`请手动更新${npmName},当前版本${currentVersion},最新版本${versionLatest}
         更新命令：npm install -g ${npmName}`)
 		);
@@ -129,7 +124,7 @@ async function checkGlobalUpdate() {
 }
 
 function registerCommand() {
-	console.log("registerCommand")
+	console.log("registerCommand");
 	program
 		.name(Object.keys(pkg.bin)[0])
 		.usage("<command> [options]")
@@ -149,21 +144,13 @@ function registerCommand() {
 		.option("-f,--force", "是否强制初始化项目")
 		.action(exec);
 
-	// 发布
-	program
-		.command("publish")
-		.option("--refreshServer", "强制更新远程Git仓库")
-		.option("--refreshToken", "强制更新远程仓库token")
-		.option("--refreshOwner", "强制更新远程仓库类型")
-		.action(exec);
-
-	program.on("option:targetPath", function (this:commander.Command) {
+	program.on("option:targetPath", function (this: commander.Command) {
 		// 设置 targetPath
 		process.env.CLI_TARGET_PATH = this.opts().targetPath;
 	});
 
 	// 开启debug模式，监听debug参数
-	program.on("option:debug", function (this:commander.Command) {
+	program.on("option:debug", function (this: commander.Command) {
 		checkArgs({ debug: this.opts().debug });
 	});
 
@@ -177,13 +164,14 @@ function registerCommand() {
 	});
 
 	program.parse(process.argv);
-	console.log("registerCommand")
+	console.log("registerCommand");
 	if (program.args && program.args.length < 1) {
 		program.outputHelp();
 		console.log();
 	}
 }
 
-core()
+core();
 
 export default core;
+module.exports = core

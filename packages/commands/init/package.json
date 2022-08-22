@@ -2,43 +2,45 @@
   "name": "@moderate-cli/init",
   "version": "0.2.0",
   "description": "> TODO: description",
-  "author": "qanglee <545540710@qq.com>",
-  "homepage": "https://github.com/moderateMan/moderate-cli#readme",
-  "license": "ISC",
-  "main": "lib/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "pub": "yarn build && yarn publish",
+    "pub:next": "yarn publish --tag next",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest --silent",
+    "test:report": "jest --coverage  --silent"
   },
   "files": [
-    "lib"
+    "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "闲D阿强",
+  "license": "MIT",
+  "homepage": "https://www.moderate.run/#/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moderateMan/moderate-cli.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/moderateMan/moderate-cli/issues"
+    "url": "https://github.com/moderateReact/r6helper"
   },
   "dependencies": {
-   "@moderate-cli/models": "^0.2.0",
-    "@moderate-cli/log": "^0.2.0",
-    "@moderate-cli/package": "^0.2.0",
-    "@moderate-cli/request": "^0.2.0",
-    "@moderate-cli/utils": "^0.2.0",
+    "@moderate-cli/models": "^0.2.1",
+    "@moderate-cli/utils": "^0.2.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/inquirer": "^8.2.3",
+    "@types/semver": "^7.3.12",
     "ejs": "^3.1.5",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
-    "inquirer": "^7.3.3",
+    "inquirer": "^8.2.4",
     "kebab-case": "^1.0.0",
     "semver": "^7.3.4",
     "spinner": "^0.3.4",
     "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.1",
+    "@types/glob": "^7.2.0",
+    "@types/inquirer": "^8.2.3",
+    "@types/user-home": "^2.0.0",
+    "rimraf": "^3.0.2"
   }
 }

@@ -1,13 +1,70 @@
 0 silly argv { _: [ 'link' ], lernaVersion: '3.22.1', '$0': 'lerna' }
 1 notice cli v3.22.1
 2 verbose rootPath /Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts
-3 error Error: Invalid package name " @moderate-cli/models": name cannot contain leading or trailing spaces; name can only contain URL-friendly characters
-3 error     at invalidPackageName (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:86:15)
-3 error     at Result.setName (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:121:11)
-3 error     at new Result (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:111:23)
-3 error     at Function.resolve (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:58:15)
-3 error     at /usr/local/lib/node_modules/lerna/node_modules/@lerna/package-graph/index.js:61:30
-3 error     at Array.forEach (<anonymous>)
-3 error     at /usr/local/lib/node_modules/lerna/node_modules/@lerna/package-graph/index.js:55:38
-3 error     at Map.forEach (<anonymous>)
-3 error     at new PackageGraph (/usr/local/lib/node_modules/lerna/node_modules/@lerna/package-graph/index.js:44:10)
+3 info Symlinking packages and binaries
+4 silly resolveSymlink /Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/utils
+5 verbose resolveSymlink [
+5 verbose resolveSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/utils',
+5 verbose resolveSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/utils'
+5 verbose resolveSymlink ]
+6 silly createSymlink [
+6 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/utils',
+6 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/utils',
+6 silly createSymlink   'junction'
+6 silly createSymlink ]
+7 silly createSymbolicLink [
+7 silly createSymbolicLink   '../../../utils',
+7 silly createSymbolicLink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/utils',
+7 silly createSymbolicLink   'junction'
+7 silly createSymbolicLink ]
+8 silly resolveSymlink /Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/init
+9 verbose resolveSymlink [
+9 verbose resolveSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/init',
+9 verbose resolveSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/commands/init'
+9 verbose resolveSymlink ]
+10 silly createSymlink [
+10 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/commands/init',
+10 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/init',
+10 silly createSymlink   'junction'
+10 silly createSymlink ]
+11 silly createSymbolicLink [
+11 silly createSymbolicLink   '../../../commands/init',
+11 silly createSymbolicLink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/init',
+11 silly createSymbolicLink   'junction'
+11 silly createSymbolicLink ]
+12 silly resolveSymlink /Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/models
+13 verbose resolveSymlink [
+13 verbose resolveSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/models',
+13 verbose resolveSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/models'
+13 verbose resolveSymlink ]
+14 silly createSymlink [
+14 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/models',
+14 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/models',
+14 silly createSymlink   'junction'
+14 silly createSymlink ]
+15 silly createSymbolicLink [
+15 silly createSymbolicLink   '../../../models',
+15 silly createSymbolicLink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/@moderate-cli/models',
+15 silly createSymbolicLink   'junction'
+15 silly createSymbolicLink ]
+16 silly createSymlink [
+16 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/commands/init/dist/',
+16 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/.bin/moderate-cli',
+16 silly createSymlink   'exec'
+16 silly createSymlink ]
+17 silly createSymlink [
+17 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/models/dist/',
+17 silly createSymlink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/.bin/moderate-cli',
+17 silly createSymlink   'exec'
+17 silly createSymlink ]
+18 silly createSymbolicLink [
+18 silly createSymbolicLink   '../../../commands/init/dist',
+18 silly createSymbolicLink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/.bin/moderate-cli',
+18 silly createSymbolicLink   'file'
+18 silly createSymbolicLink ]
+19 silly createSymbolicLink [
+19 silly createSymbolicLink   '../../../models/dist',
+19 silly createSymbolicLink   '/Users/johnlee/workSpace/frontEnd/cli/moderate-cli-ts/packages/core/node_modules/.bin/moderate-cli',
+19 silly createSymbolicLink   'file'
+19 silly createSymbolicLink ]
+20 error
