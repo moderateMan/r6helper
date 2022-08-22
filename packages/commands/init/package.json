@@ -17,10 +17,9 @@
   "author": "闲D阿强",
   "license": "MIT",
   "homepage": "https://www.moderate.run/#/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/moderateReact/r6helper"
-  },
+  "publishConfig": {
+		"access": "public"
+	},
   "dependencies": {
     "@moderate-cli/models": "^0.2.1",
     "@moderate-cli/utils": "^0.2.1",
@@ -42,5 +41,6 @@
     "@types/inquirer": "^8.2.3",
     "@types/user-home": "^2.0.0",
     "rimraf": "^3.0.2"
-  }
+  },
+  "gitHead": "9b073fd6d8b2ac64e910fb0af70efa5440d69c34"
 }

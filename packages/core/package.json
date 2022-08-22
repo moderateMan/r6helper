@@ -12,6 +12,9 @@
 		"test": "jest --silent",
 		"test:report": "jest --coverage  --silent"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"bin": {
 		"moderate-cli": "./dist/"
 	},
@@ -21,10 +24,6 @@
 	"author": "闲D阿强",
 	"license": "MIT",
 	"homepage": "https://www.moderate.run/#/",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/moderateReact/r6helper"
-	},
 	"devDependencies": {
 		"@types/commander": "^2.12.2",
 		"@types/path-exists": "^4.0.2",
@@ -47,5 +46,6 @@
 		"root-check": "^1.0.0",
 		"semver": "^7.3.7",
 		"user-home": "^3.0.0"
-	}
+	},
+	"gitHead": "9b073fd6d8b2ac64e910fb0af70efa5440d69c34"
 }

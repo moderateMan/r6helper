@@ -14,13 +14,12 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+		"access": "public"
+	},
   "author": "闲D阿强",
   "license": "MIT",
   "homepage": "https://www.moderate.run/#/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/moderateReact/r6helper"
-  },
   "dependencies": {
     "@moderate-cli/utils": "^0.2.1",
     "axios": "^0.27.2",
@@ -38,5 +37,6 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/semver": "^7.3.12"
-  }
+  },
+  "gitHead": "9b073fd6d8b2ac64e910fb0af70efa5440d69c34"
 }
